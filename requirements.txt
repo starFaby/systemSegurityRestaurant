@@ -1,0 +1,37 @@
+Flask
+Flask-WTF
+Jinja2
+Flask-DebugToolbar
+'''
+__version__ = '0.1'
+from flask import Flask
+from flask_debugtoolbar import DebugToolbarExtension
+app = Flask('src', template_folder='templates')
+app.config['SECRET_KEY'] = 'random'
+app.debug = True
+toolbar = DebugToolbarExtension(app)
+from src.controllers import *
+
+
+import os
+import glob
+__all__ = [os.path.basename(
+    f)[:-3] for f in glob.glob(os.path.dirname(__file__) + "/*.py")]
+
+
+    
+import os
+from src import app
+class Server():
+    def __init__(self):
+        pass
+
+    def start(self):
+        if __name__ == '__main__':
+            host = "localhost"
+            port = int(os.environ.get("PORT", 4000))
+            app.run(host=host,port=port, debug=True)
+
+star = Server()
+star.start()
+'''
